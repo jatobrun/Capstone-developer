@@ -1,0 +1,390 @@
+{
+	"id": "67ae1a20-861d-4817-b40e-f0f2c00d70e4",
+	"name": "Capstone",
+	"timestamp": "2020-06-01T22:26:28.671Z",
+	"collection_id": "e575e246-4bc7-46a4-9f34-1a959e062855",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 12,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "e3a8fd57-9e06-42fb-80c0-ad0f24dd09d9",
+			"name": "Get all posts",
+			"url": "https://jvrng7sbye.execute-api.us-east-1.amazonaws.com/dev/posts",
+			"time": 312,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				312
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "6c21dae5-8011-438e-89f6-6b1e71f7a05e",
+			"name": "Create post",
+			"url": "https://jvrng7sbye.execute-api.us-east-1.amazonaws.com/dev/posts",
+			"time": 260,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				260
+			],
+			"allTests": [
+				{
+					"Status code is 201": true
+				}
+			]
+		},
+		{
+			"id": "a904d997-27fd-49c4-acba-2fd4cabbb1a6",
+			"name": "Get attachment URL",
+			"url": "https://jvrng7sbye.execute-api.us-east-1.amazonaws.com/dev/posts/1880233e-1a02-4a51-ac1c-edb638c555a3/attachment",
+			"time": 216,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				216
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "8a4a8e66-d0cc-4ec1-92a4-15e509d4813e",
+			"name": "Delete post",
+			"url": "https://jvrng7sbye.execute-api.us-east-1.amazonaws.com/dev/posts/1880233e-1a02-4a51-ac1c-edb638c555a3",
+			"time": 2470,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				2470
+			],
+			"allTests": [
+				{
+					"Status code is 201": true
+				}
+			]
+		},
+		{
+			"id": "d8d22769-bf3e-4ff6-ae85-4e818e9bb026",
+			"name": "Get all posts",
+			"url": "https://jvrng7sbye.execute-api.us-east-1.amazonaws.com/dev/posts",
+			"time": 163,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {
+				"Status code is 403": true
+			},
+			"testPassFailCounts": {
+				"Status code is 403": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				163
+			],
+			"allTests": [
+				{
+					"Status code is 403": true
+				}
+			]
+		},
+		{
+			"id": "4e600ba6-e34d-4a32-9bb6-5784969557b3",
+			"name": "Create post",
+			"url": "https://jvrng7sbye.execute-api.us-east-1.amazonaws.com/dev/posts",
+			"time": 142,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {
+				"Status code is 403": true
+			},
+			"testPassFailCounts": {
+				"Status code is 403": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				142
+			],
+			"allTests": [
+				{
+					"Status code is 403": true
+				}
+			]
+		},
+		{
+			"id": "81068189-0d60-40d8-b82e-e6802ee1541b",
+			"name": "Delete post",
+			"url": "https://jvrng7sbye.execute-api.us-east-1.amazonaws.com/dev/posts/0b06b3a4-4e4f-46ff-9ab5-42c30a60c00a",
+			"time": 129,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {
+				"Status code is 403": true
+			},
+			"testPassFailCounts": {
+				"Status code is 403": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				129
+			],
+			"allTests": [
+				{
+					"Status code is 403": true
+				}
+			]
+		},
+		{
+			"id": "9c9a306b-e8e5-4912-a8de-50bd205caf5d",
+			"name": "Get attachment URL",
+			"url": "https://jvrng7sbye.execute-api.us-east-1.amazonaws.com/dev/posts/71d6b79e-2c68-4b55-a728-6cf1e9f9c2eb/attachment",
+			"time": 138,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {
+				"Status code is 403": true
+			},
+			"testPassFailCounts": {
+				"Status code is 403": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				138
+			],
+			"allTests": [
+				{
+					"Status code is 403": true
+				}
+			]
+		},
+		{
+			"id": "8654a8cd-231a-4be0-8397-1adc727baac0",
+			"name": "Get all posts",
+			"url": "https://jvrng7sbye.execute-api.us-east-1.amazonaws.com/dev/posts",
+			"time": 229,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				229
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "06b5b666-b585-40da-897f-eb5f7bae5d04",
+			"name": "Create post",
+			"url": "https://jvrng7sbye.execute-api.us-east-1.amazonaws.com/dev/posts",
+			"time": 238,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				238
+			],
+			"allTests": [
+				{
+					"Status code is 201": true
+				}
+			]
+		},
+		{
+			"id": "b2fc8c7f-f065-4c4d-bdb5-0ceeaec8ae18",
+			"name": "Get attachment URL",
+			"url": "https://jvrng7sbye.execute-api.us-east-1.amazonaws.com/dev/posts/4180c8c8-a9c1-4813-b4d3-506080d67683/attachment",
+			"time": 232,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				232
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "a759df03-29a0-4b11-8579-2ca572405ce4",
+			"name": "Delete post",
+			"url": "https://jvrng7sbye.execute-api.us-east-1.amazonaws.com/dev/posts/4180c8c8-a9c1-4813-b4d3-506080d67683",
+			"time": 185,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				185
+			],
+			"allTests": [
+				{
+					"Status code is 201": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 4714,
+	"collection": {
+		"requests": [
+			{
+				"id": "e3a8fd57-9e06-42fb-80c0-ad0f24dd09d9",
+				"method": "GET"
+			},
+			{
+				"id": "6c21dae5-8011-438e-89f6-6b1e71f7a05e",
+				"method": "POST"
+			},
+			{
+				"id": "a904d997-27fd-49c4-acba-2fd4cabbb1a6",
+				"method": "POST"
+			},
+			{
+				"id": "8a4a8e66-d0cc-4ec1-92a4-15e509d4813e",
+				"method": "DELETE"
+			},
+			{
+				"id": "d8d22769-bf3e-4ff6-ae85-4e818e9bb026",
+				"method": "GET"
+			},
+			{
+				"id": "4e600ba6-e34d-4a32-9bb6-5784969557b3",
+				"method": "POST"
+			},
+			{
+				"id": "81068189-0d60-40d8-b82e-e6802ee1541b",
+				"method": "DELETE"
+			},
+			{
+				"id": "9c9a306b-e8e5-4912-a8de-50bd205caf5d",
+				"method": "POST"
+			},
+			{
+				"id": "8654a8cd-231a-4be0-8397-1adc727baac0",
+				"method": "GET"
+			},
+			{
+				"id": "06b5b666-b585-40da-897f-eb5f7bae5d04",
+				"method": "POST"
+			},
+			{
+				"id": "b2fc8c7f-f065-4c4d-bdb5-0ceeaec8ae18",
+				"method": "POST"
+			},
+			{
+				"id": "a759df03-29a0-4b11-8579-2ca572405ce4",
+				"method": "DELETE"
+			}
+		]
+	}
+}
