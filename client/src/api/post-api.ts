@@ -33,6 +33,7 @@ export async function createPost(
   idToken: string,
   newPost: CreatePostRequest
 ): Promise<Post> {
+  console.log(newPost)
   const response = await Axios.post(`${apiEndpoint}/posts`,  JSON.stringify(newPost), {
     headers: {
       'Content-Type': 'application/json',

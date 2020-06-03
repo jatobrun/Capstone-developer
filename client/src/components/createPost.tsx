@@ -115,7 +115,7 @@ export class Po extends React.PureComponent<PostsProps, PostsState> {
   render() {
     return (
       <div>
-        <Header as="h1">Posts</Header>
+        <Header as="h1">Create Posts</Header>
 
         {this.renderCreatePostTitleInput()}
         {this.renderCreatePostDescriptionInput()}
@@ -166,6 +166,8 @@ export class Po extends React.PureComponent<PostsProps, PostsState> {
               content: 'Create',
               onClick: this.onPostCreate
             }}
+            size = "mini"
+            placeholder = 'Some comment?'
           />
         </Grid.Column>
         <Grid.Column width={16}>

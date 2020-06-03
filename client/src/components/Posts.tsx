@@ -105,8 +105,8 @@ export class Posts extends React.PureComponent<PostsProps, PostsState> {
   render() {
     return (
       <div>
-        <Header as="h1">Posts</Header>
-
+        <Header as="h1">My Posts</Header>
+        {this.renderLabel()}
         {this.renderPosts()}
       </div>
     )
@@ -155,18 +155,25 @@ export class Posts extends React.PureComponent<PostsProps, PostsState> {
     )
   }
 
+  renderLabel(){
+    return(
+      <Grid padded>
+        <Grid.Row>
+          <Grid.Column width={5} verticalAlign="middle">Title</Grid.Column>
+          <Grid.Column width={5} verticalAlign="middle">Description</Grid.Column>
+          <Grid.Column width={3} floated="right">Date</Grid.Column>
+        </Grid.Row>
+      </Grid>
+      
+    )
+  }
+
   renderPostsList() {
     return (
       <Grid padded>
         {this.state.Posts.map((Post, pos) => {
           return (
             <Grid.Row key={Post.PostId}>
-              <Grid.Column width={1} verticalAlign="middle">
-                <Checkbox
-                  onChange={() => this.onPostCheck(pos)}
-                  checked={Post.done}
-                />
-              </Grid.Column>
               <Grid.Column width={5} verticalAlign="middle">
                 {Post.name}
               </Grid.Column>

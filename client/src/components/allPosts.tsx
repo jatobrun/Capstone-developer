@@ -11,7 +11,8 @@ import {
   Icon,
   Input,
   Image,
-  Loader
+  Loader,
+  GridRow
 } from 'semantic-ui-react'
 
 import { createPost, deletePost, getAllPosts, patchPost } from '../api/post-api'
@@ -105,8 +106,8 @@ export class Pos extends React.PureComponent<PostsProps, PostsState> {
   render() {
     return (
       <div>
-        <Header as="h1">Posts</Header>
-
+        <Header as="h1">Feed</Header>
+        {this.renderLabel()}
         {this.renderPosts()}
       </div>
     )
@@ -154,7 +155,17 @@ export class Pos extends React.PureComponent<PostsProps, PostsState> {
       </Grid.Row>
     )
   }
-
+  renderLabel(){
+    return(
+      <Grid padded>
+        <Grid.Row>
+          <Grid.Column width={5} verticalAlign="middle">Title</Grid.Column>
+          <Grid.Column width={5} verticalAlign="middle">Description</Grid.Column>
+          <Grid.Column width={3} floated="right">Date</Grid.Column>
+        </Grid.Row>
+      </Grid>
+    )
+  }
   renderPostsList() {
     return (
       <Grid padded>
