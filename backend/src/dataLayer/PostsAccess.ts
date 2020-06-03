@@ -15,8 +15,8 @@ export class PostsAccess {
     private readonly PostsTable = process.env.POSTS_TABLE
   ) {}
 
-  async getAllPosts(userId: string): Promise<PostItem[]> {
-    console.log('Getting all Posts for user:', userId)
+  async getMyPosts(userId: string): Promise<PostItem[]> {
+    console.log('Getting My Posts for user:', userId)
 
     const result = await this.docClient
       .query({
@@ -32,7 +32,20 @@ export class PostsAccess {
       .promise()
 
     const items = result.Items
-    console.log('getAllPosts result:', items)
+    console.log('getMyPosts result:', items)
+    return items as PostItem[]
+  }
+  async getAllPosts(): Promise<PostItem[]> {
+    console.log('Getting all Posts:')
+
+    const result = await this.docClient
+      .scan({
+        TableName: this.PostsTable
+      })
+      .promise()
+
+    const items = result.Items
+    console.log('get All Posts result:', items)
     return items as PostItem[]
   }
 

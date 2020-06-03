@@ -22,9 +22,14 @@ export async function createPost(newPost: CreatePostRequest, userId: string) {
   return await PostAccess.CreatePost(item)
 }
 
+// getMyPosts
+export async function getMyPosts(userId: string): Promise<PostItem[]> {
+  return await PostAccess.getMyPosts(userId)
+}
+
 // getAllPosts
-export async function getAllPosts(userId: string): Promise<PostItem[]> {
-  return await PostAccess.getAllPosts(userId)
+export async function getAllPosts(): Promise<PostItem[]> {
+  return await PostAccess.getAllPosts()
 }
 
 // deletePost

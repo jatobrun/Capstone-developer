@@ -37,13 +37,35 @@ functions:
   Auth:
     handler: src/lambda/auth/auth0Authorizer.handler
 
-  # Post: Configure this function
-  GetPosts:
-    handler: src/lambda/http/getPosts.handler
+  GetAllPosts:
+    handler: src/lambda/http/getAllPosts.handler
     events:
       - http:
           method: get
           path: posts
+          cors: true
+          documentation:
+            description: Get all Posts
+    deploymentSettings:
+      type: Linear10PercentEvery1Minute
+      alias: Live
+    iamRoleStatements:
+      - Effect: Allow
+        Action:
+          - dynamodb:Query
+          - dynamodb:Scan
+        Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.POSTS_TABLE}
+      - Effect: Allow
+        Action:
+          - dynamodb:Query
+        Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.POSTS_TABLE}/index/${self:provider.environment.POST_INDEX}
+  # Post: Configure this function
+  GetMyPosts:
+    handler: src/lambda/http/getMyPosts.handler
+    events:
+      - http:
+          method: get
+          path: my-posts
           cors: true
           authorizer: Auth
           documentation:
