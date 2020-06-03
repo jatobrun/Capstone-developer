@@ -7,7 +7,8 @@ import { EditPost } from './components/EditPost'
 import { LogIn } from './components/LogIn'
 import { NotFound } from './components/NotFound'
 import { Posts } from './components/Posts'
-
+import { Pos } from './components/allPosts'
+import { Po } from './components/createPost'
 export interface AppProps {}
 
 export interface AppProps {
@@ -95,11 +96,27 @@ export default class App extends Component<AppProps, AppState> {
     return (
       <Switch>
         <Route
-          path="/"
+          path="/my-posts"
           exact
           render={props => {
             console.log(this.props)
             return <Posts {...props} auth={this.props.auth} />
+          }}
+        />
+        <Route
+          path="/create-post"
+          exact
+          render={props => {
+            console.log(this.props)
+            return <Po {...props} auth={this.props.auth} />
+          }}
+        />
+        <Route
+          path="/"
+          exact
+          render={props => {
+            console.log(this.props)
+            return <Pos {...props} auth={this.props.auth} />
           }}
         />
 

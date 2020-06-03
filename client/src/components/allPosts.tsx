@@ -14,7 +14,7 @@ import {
   Loader
 } from 'semantic-ui-react'
 
-import { createPost, deletePost, getMyPosts, patchPost } from '../api/post-api'
+import { createPost, deletePost, getAllPosts, patchPost } from '../api/post-api'
 import Auth from '../auth/Auth'
 import { Post } from '../types/Post'
 
@@ -29,7 +29,7 @@ interface PostsState {
   loadingPosts: boolean
 }
 
-export class Posts extends React.PureComponent<PostsProps, PostsState> {
+export class Pos extends React.PureComponent<PostsProps, PostsState> {
   state: PostsState = {
     Posts: [],
     newPostName: '',
@@ -92,7 +92,7 @@ export class Posts extends React.PureComponent<PostsProps, PostsState> {
 
   async componentDidMount() {
     try {
-      const Posts = await getMyPosts(this.props.auth.getIdToken())
+      const Posts = await getAllPosts(this.props.auth.getIdToken())
       this.setState({
         Posts,
         loadingPosts: false
@@ -161,12 +161,6 @@ export class Posts extends React.PureComponent<PostsProps, PostsState> {
         {this.state.Posts.map((Post, pos) => {
           return (
             <Grid.Row key={Post.PostId}>
-              <Grid.Column width={1} verticalAlign="middle">
-                <Checkbox
-                  onChange={() => this.onPostCheck(pos)}
-                  checked={Post.done}
-                />
-              </Grid.Column>
               <Grid.Column width={5} verticalAlign="middle">
                 {Post.name}
               </Grid.Column>
@@ -175,24 +169,6 @@ export class Posts extends React.PureComponent<PostsProps, PostsState> {
               </Grid.Column>
               <Grid.Column width={3} floated="right">
                 {Post.dueDate}
-              </Grid.Column>
-              <Grid.Column width={1} floated="right">
-                <Button
-                  icon
-                  color="blue"
-                  onClick={() => this.onEditButtonClick(Post.PostId)}
-                >
-                  <Icon name="pencil" />
-                </Button>
-              </Grid.Column>
-              <Grid.Column width={1} floated="right">
-                <Button
-                  icon
-                  color="red"
-                  onClick={() => this.onPostDelete(Post.PostId)}
-                >
-                  <Icon name="delete" />
-                </Button>
               </Grid.Column>
               {Post.attachmentUrl && (
                 <Image src={Post.attachmentUrl} size="small" wrapped />

@@ -5,4 +5,5 @@ export interface Post {
   dueDate: string
   done: boolean
   attachmentUrl?: string
+  description: string
 }

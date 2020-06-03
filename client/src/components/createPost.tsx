@@ -26,13 +26,15 @@ interface PostsProps {
 interface PostsState {
   Posts: Post[]
   newPostName: string
+  newPostDescription: string
   loadingPosts: boolean
 }
 
-export class Posts extends React.PureComponent<PostsProps, PostsState> {
+export class Po extends React.PureComponent<PostsProps, PostsState> {
   state: PostsState = {
     Posts: [],
     newPostName: '',
+    newPostDescription: '',
     loadingPosts: true
   }
 
@@ -40,21 +42,29 @@ export class Posts extends React.PureComponent<PostsProps, PostsState> {
     this.setState({ newPostName: event.target.value })
   }
 
+  handleDescriptionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(event.target.value)
+    this.setState({ newPostDescription: event.target.value })
+  }
+
   onEditButtonClick = (PostId: string) => {
     this.props.history.push(`/Posts/${PostId}/edit`)
   }
 
   onPostCreate = async (event: React.ChangeEvent<HTMLButtonElement>) => {
+    console.log('Creanding post')
     try {
+      console.log(this.state.newPostDescription)
       const dueDate = this.calculateDueDate()
       const newPost = await createPost(this.props.auth.getIdToken(), {
         name: this.state.newPostName,
         dueDate,
-        description: ''
+        description: this.state.newPostDescription
       })
       this.setState({
         Posts: [...this.state.Posts, newPost],
-        newPostName: ''
+        newPostName: '',
+        newPostDescription: ''
       })
     } catch {
       alert('Post creation failed')
@@ -107,12 +117,44 @@ export class Posts extends React.PureComponent<PostsProps, PostsState> {
       <div>
         <Header as="h1">Posts</Header>
 
-        {this.renderPosts()}
+        {this.renderCreatePostTitleInput()}
+        {this.renderCreatePostDescriptionInput()}
+        {this.renderCreatePostButtonInput()}
       </div>
     )
   }
 
-  renderCreatePostInput() {
+  renderCreatePostTitleInput() {
+    return (
+      <Grid.Row>
+        <Grid.Column width={16}>
+          <Input
+            fluid
+            actionPosition="left"
+            placeholder="Title"
+            onChange={this.handleNameChange}
+          />
+        </Grid.Column>
+      </Grid.Row>
+      
+    )
+  }
+  renderCreatePostDescriptionInput() {
+    return (
+      <Grid.Row>
+        <Grid.Column width={16}>
+          <Input
+            fluid
+            actionPosition="left"
+            placeholder="Description"
+            onChange={this.handleDescriptionChange}
+          />
+        </Grid.Column>
+      </Grid.Row>
+      
+    )
+  }
+  renderCreatePostButtonInput() {
     return (
       <Grid.Row>
         <Grid.Column width={16}>
@@ -121,89 +163,16 @@ export class Posts extends React.PureComponent<PostsProps, PostsState> {
               color: 'teal',
               labelPosition: 'left',
               icon: 'add',
-              content: 'New task',
+              content: 'Create',
               onClick: this.onPostCreate
             }}
-            fluid
-            actionPosition="left"
-            placeholder="To change the world..."
-            onChange={this.handleNameChange}
           />
         </Grid.Column>
         <Grid.Column width={16}>
           <Divider />
         </Grid.Column>
       </Grid.Row>
-    )
-  }
-
-  renderPosts() {
-    if (this.state.loadingPosts) {
-      return this.renderLoading()
-    }
-
-    return this.renderPostsList()
-  }
-
-  renderLoading() {
-    return (
-      <Grid.Row>
-        <Loader indeterminate active inline="centered">
-          Loading Posts
-        </Loader>
-      </Grid.Row>
-    )
-  }
-
-  renderPostsList() {
-    return (
-      <Grid padded>
-        {this.state.Posts.map((Post, pos) => {
-          return (
-            <Grid.Row key={Post.PostId}>
-              <Grid.Column width={1} verticalAlign="middle">
-                <Checkbox
-                  onChange={() => this.onPostCheck(pos)}
-                  checked={Post.done}
-                />
-              </Grid.Column>
-              <Grid.Column width={5} verticalAlign="middle">
-                {Post.name}
-              </Grid.Column>
-              <Grid.Column width={5} verticalAlign="middle">
-                {Post.description}
-              </Grid.Column>
-              <Grid.Column width={3} floated="right">
-                {Post.dueDate}
-              </Grid.Column>
-              <Grid.Column width={1} floated="right">
-                <Button
-                  icon
-                  color="blue"
-                  onClick={() => this.onEditButtonClick(Post.PostId)}
-                >
-                  <Icon name="pencil" />
-                </Button>
-              </Grid.Column>
-              <Grid.Column width={1} floated="right">
-                <Button
-                  icon
-                  color="red"
-                  onClick={() => this.onPostDelete(Post.PostId)}
-                >
-                  <Icon name="delete" />
-                </Button>
-              </Grid.Column>
-              {Post.attachmentUrl && (
-                <Image src={Post.attachmentUrl} size="small" wrapped />
-              )}
-              <Grid.Column width={16}>
-                <Divider />
-              </Grid.Column>
-            </Grid.Row>
-          )
-        })}
-      </Grid>
+      
     )
   }
 
