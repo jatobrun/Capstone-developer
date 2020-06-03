@@ -64,7 +64,7 @@ export class Posts extends React.PureComponent<PostsProps, PostsState> {
     try {
       await deletePost(this.props.auth.getIdToken(), PostId)
       this.setState({
-        Posts: this.state.Posts.filter(Post => Post.postId != PostId)
+        Posts: this.state.Posts.filter(Post => Post.PostId != PostId)
       })
     } catch {
       alert('Post deletion failed')
@@ -74,7 +74,7 @@ export class Posts extends React.PureComponent<PostsProps, PostsState> {
   onPostCheck = async (pos: number) => {
     try {
       const Post = this.state.Posts[pos]
-      await patchPost(this.props.auth.getIdToken(), Post.postId, {
+      await patchPost(this.props.auth.getIdToken(), Post.PostId, {
         name: Post.name,
         dueDate: Post.dueDate,
         done: !Post.done
@@ -161,7 +161,7 @@ export class Posts extends React.PureComponent<PostsProps, PostsState> {
       <Grid padded>
         {this.state.Posts.map((Post, pos) => {
           return (
-            <Grid.Row key={Post.postId}>
+            <Grid.Row key={Post.PostId}>
               <Grid.Column width={1} verticalAlign="middle">
                 <Checkbox
                   onChange={() => this.onPostCheck(pos)}
@@ -178,7 +178,7 @@ export class Posts extends React.PureComponent<PostsProps, PostsState> {
                 <Button
                   icon
                   color="blue"
-                  onClick={() => this.onEditButtonClick(Post.postId)}
+                  onClick={() => this.onEditButtonClick(Post.PostId)}
                 >
                   <Icon name="pencil" />
                 </Button>
@@ -187,7 +187,7 @@ export class Posts extends React.PureComponent<PostsProps, PostsState> {
                 <Button
                   icon
                   color="red"
-                  onClick={() => this.onPostDelete(Post.postId)}
+                  onClick={() => this.onPostDelete(Post.PostId)}
                 >
                   <Icon name="delete" />
                 </Button>

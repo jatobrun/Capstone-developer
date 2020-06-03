@@ -59,6 +59,12 @@ export default class App extends Component<AppProps, AppState> {
         <Menu.Item name="home">
           <Link to="/">Home</Link>
         </Menu.Item>
+        <Menu.Item name="my-posts">
+          <Link to="/my-posts">My Posts</Link>
+        </Menu.Item>
+        <Menu.Item name="create-posts">
+          <Link to="/create-post">Create Post</Link>
+        </Menu.Item>
 
         <Menu.Menu position="right">{this.logInLogOutButton()}</Menu.Menu>
       </Menu>
@@ -92,6 +98,7 @@ export default class App extends Component<AppProps, AppState> {
           path="/"
           exact
           render={props => {
+            console.log(this.props)
             return <Posts {...props} auth={this.props.auth} />
           }}
         />
@@ -100,6 +107,7 @@ export default class App extends Component<AppProps, AppState> {
           path="/Posts/:PostId/edit"
           exact
           render={props => {
+            console.log(this.props)
             return <EditPost {...props} auth={this.props.auth} />
           }}
         />

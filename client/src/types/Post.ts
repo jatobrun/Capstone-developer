@@ -1,5 +1,5 @@
 export interface Post {
-  postId: string
+  PostId: string
   createdAt: string
   name: string
   dueDate: string
